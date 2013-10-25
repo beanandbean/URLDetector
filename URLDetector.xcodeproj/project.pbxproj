@@ -22,6 +22,9 @@
 		2C28B1E41819271A00D535C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C28B1C31819271A00D535C6 /* UIKit.framework */; };
 		2C28B1EC1819271A00D535C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C28B1EA1819271A00D535C6 /* InfoPlist.strings */; };
 		2C28B1EE1819271A00D535C6 /* URLDetectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C28B1ED1819271A00D535C6 /* URLDetectorTests.m */; };
+		2C28B1F9181927C400D535C6 /* BBURLDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C28B1F8181927C400D535C6 /* BBURLDetection.m */; };
+		2C28B1FD1819293500D535C6 /* BBFullURLMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C28B1FC1819293500D535C6 /* BBFullURLMatcher.m */; };
+		2C28B20018192A6E00D535C6 /* BBURLMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C28B1FF18192A6E00D535C6 /* BBURLMatch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,13 @@
 		2C28B1E91819271A00D535C6 /* URLDetectorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "URLDetectorTests-Info.plist"; sourceTree = "<group>"; };
 		2C28B1EB1819271A00D535C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C28B1ED1819271A00D535C6 /* URLDetectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLDetectorTests.m; sourceTree = "<group>"; };
+		2C28B1F7181927C400D535C6 /* BBURLDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBURLDetection.h; sourceTree = "<group>"; };
+		2C28B1F8181927C400D535C6 /* BBURLDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBURLDetection.m; sourceTree = "<group>"; };
+		2C28B1FA181928EA00D535C6 /* BBURLMatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBURLMatcher.h; sourceTree = "<group>"; };
+		2C28B1FB1819293500D535C6 /* BBFullURLMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBFullURLMatcher.h; sourceTree = "<group>"; };
+		2C28B1FC1819293500D535C6 /* BBFullURLMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBFullURLMatcher.m; sourceTree = "<group>"; };
+		2C28B1FE18192A6E00D535C6 /* BBURLMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBURLMatch.h; sourceTree = "<group>"; };
+		2C28B1FF18192A6E00D535C6 /* BBURLMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBURLMatch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +124,7 @@
 		2C28B1C51819271A00D535C6 /* URLDetector */ = {
 			isa = PBXGroup;
 			children = (
+				2CFF6CF6181A70640014BD3B /* URL Detector */,
 				2C28B1CE1819271A00D535C6 /* BBAppDelegate.h */,
 				2C28B1CF1819271A00D535C6 /* BBAppDelegate.m */,
 				2C28B1D11819271A00D535C6 /* Main_iPhone.storyboard */,
@@ -153,6 +164,28 @@
 				2C28B1EA1819271A00D535C6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C28B20118192B6200D535C6 /* URL Matchers */ = {
+			isa = PBXGroup;
+			children = (
+				2C28B1FB1819293500D535C6 /* BBFullURLMatcher.h */,
+				2C28B1FC1819293500D535C6 /* BBFullURLMatcher.m */,
+			);
+			name = "URL Matchers";
+			sourceTree = "<group>";
+		};
+		2CFF6CF6181A70640014BD3B /* URL Detector */ = {
+			isa = PBXGroup;
+			children = (
+				2C28B1F7181927C400D535C6 /* BBURLDetection.h */,
+				2C28B1F8181927C400D535C6 /* BBURLDetection.m */,
+				2C28B1FA181928EA00D535C6 /* BBURLMatcher.h */,
+				2C28B20118192B6200D535C6 /* URL Matchers */,
+				2C28B1FE18192A6E00D535C6 /* BBURLMatch.h */,
+				2C28B1FF18192A6E00D535C6 /* BBURLMatch.m */,
+			);
+			name = "URL Detector";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,8 +288,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C28B1D91819271A00D535C6 /* BBViewController.m in Sources */,
+				2C28B20018192A6E00D535C6 /* BBURLMatch.m in Sources */,
 				2C28B1D01819271A00D535C6 /* BBAppDelegate.m in Sources */,
 				2C28B1CC1819271A00D535C6 /* main.m in Sources */,
+				2C28B1FD1819293500D535C6 /* BBFullURLMatcher.m in Sources */,
+				2C28B1F9181927C400D535C6 /* BBURLDetection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +511,7 @@
 				2C28B1F31819271A00D535C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C28B1F41819271A00D535C6 /* Build configuration list for PBXNativeTarget "URLDetectorTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +520,7 @@
 				2C28B1F61819271A00D535C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
