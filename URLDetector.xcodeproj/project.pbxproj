@@ -25,6 +25,8 @@
 		2C28B1F9181927C400D535C6 /* BBURLDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C28B1F8181927C400D535C6 /* BBURLDetection.m */; };
 		2C28B1FD1819293500D535C6 /* BBFullURLMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C28B1FC1819293500D535C6 /* BBFullURLMatcher.m */; };
 		2C28B20018192A6E00D535C6 /* BBURLMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C28B1FF18192A6E00D535C6 /* BBURLMatch.m */; };
+		2CB072FC181FBBA7000CDA1F /* website_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 2CB072FB181FBBA7000CDA1F /* website_dictionary.json */; };
+		2CB072FF181FBBC2000CDA1F /* BBURLDictionaryMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB072FE181FBBC2000CDA1F /* BBURLDictionaryMatcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,9 @@
 		2C28B1FC1819293500D535C6 /* BBFullURLMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBFullURLMatcher.m; sourceTree = "<group>"; };
 		2C28B1FE18192A6E00D535C6 /* BBURLMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBURLMatch.h; sourceTree = "<group>"; };
 		2C28B1FF18192A6E00D535C6 /* BBURLMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBURLMatch.m; sourceTree = "<group>"; };
+		2CB072FB181FBBA7000CDA1F /* website_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = website_dictionary.json; sourceTree = "<group>"; };
+		2CB072FD181FBBC2000CDA1F /* BBURLDictionaryMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBURLDictionaryMatcher.h; sourceTree = "<group>"; };
+		2CB072FE181FBBC2000CDA1F /* BBURLDictionaryMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBURLDictionaryMatcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +145,7 @@
 		2C28B1C61819271A00D535C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2CB072FB181FBBA7000CDA1F /* website_dictionary.json */,
 				2C28B1C71819271A00D535C6 /* URLDetector-Info.plist */,
 				2C28B1C81819271A00D535C6 /* InfoPlist.strings */,
 				2C28B1CB1819271A00D535C6 /* main.m */,
@@ -171,6 +177,8 @@
 			children = (
 				2C28B1FB1819293500D535C6 /* BBFullURLMatcher.h */,
 				2C28B1FC1819293500D535C6 /* BBFullURLMatcher.m */,
+				2CB072FD181FBBC2000CDA1F /* BBURLDictionaryMatcher.h */,
+				2CB072FE181FBBC2000CDA1F /* BBURLDictionaryMatcher.m */,
 			);
 			name = "URL Matchers";
 			sourceTree = "<group>";
@@ -265,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB072FC181FBBA7000CDA1F /* website_dictionary.json in Resources */,
 				2C28B1D61819271A00D535C6 /* Main_iPad.storyboard in Resources */,
 				2C28B1DB1819271A00D535C6 /* Images.xcassets in Resources */,
 				2C28B1D31819271A00D535C6 /* Main_iPhone.storyboard in Resources */,
@@ -287,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB072FF181FBBC2000CDA1F /* BBURLDictionaryMatcher.m in Sources */,
 				2C28B1D91819271A00D535C6 /* BBViewController.m in Sources */,
 				2C28B20018192A6E00D535C6 /* BBURLMatch.m in Sources */,
 				2C28B1D01819271A00D535C6 /* BBAppDelegate.m in Sources */,

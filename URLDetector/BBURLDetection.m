@@ -9,6 +9,7 @@
 #import "BBURLDetection.h"
 
 #import "BBFullURLMatcher.h"
+#import "BBURLDictionaryMatcher.h"
 
 #import "BBURLMatch.h"
 
@@ -37,10 +38,33 @@
     if (self) {
         self.string = string;
         
+        [BBURLDictionaryMatcher initializeWebsiteDictionary];
+        
         NSMutableArray *matches = [[NSMutableArray alloc] init];
         
         BBFullURLMatcher *fullURLMatcher = [[BBFullURLMatcher alloc] init];
         [matches addObjectsFromArray:[fullURLMatcher match:string]];
+        
+        BBURLDictionaryMatcher *dictionaryMatcher = [[BBURLDictionaryMatcher alloc] init];
+        [matches addObjectsFromArray:[dictionaryMatcher match:string]];
+        
+        [matches sortUsingComparator:^ NSComparisonResult(id obj1, id obj2) {
+            BBURLMatch *firstMatch = (BBURLMatch *)obj1;
+            BBURLMatch *secondMatch = (BBURLMatch *)obj2;
+            return [firstMatch.URL compare:secondMatch.URL];
+        }];
+        
+        NSMutableArray *newMatches = [NSMutableArray array];
+        
+        BBURLMatch *previousMatch = [[BBURLMatch alloc] init];
+        for (BBURLMatch *match in matches) {
+            if (![match.URL isEqualToString:previousMatch.URL]) {
+                [newMatches addObject:match];
+                previousMatch = match;
+            }
+        }
+        
+        matches = newMatches;
         
         [matches sortUsingComparator:^ NSComparisonResult (id obj1, id obj2) {
             BBURLMatch *firstMatch = (BBURLMatch *)obj1;
@@ -51,18 +75,6 @@
                 return [BBURLDetection compare:firstMatch.begin and:secondMatch.begin];
             }
         }];
-        
-        BBURLMatch *previousMatch = [[BBURLMatch alloc] init];
-        previousMatch.type = -1;
-        previousMatch.begin = -1;
-        previousMatch.end = -1;
-        for (BBURLMatch *match in matches) {
-            if (match.type == previousMatch.type && match.begin == previousMatch.begin && match.end == previousMatch.end) {
-                [matches removeObject:match];
-            } else {
-                previousMatch = match;
-            }
-        }
         
         self.matches = matches;
     }

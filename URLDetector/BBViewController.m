@@ -21,10 +21,8 @@
 
 @implementation BBViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     UILabel *label = [[UILabel alloc] init];
     label.numberOfLines = 0;
@@ -54,22 +52,30 @@
     
     self.label = [[UILabel alloc] init];
     self.label.numberOfLines = 0;
-    self.label.translatesAutoresizingMaskIntoConstraints = NO;
     self.label.text = @"URL: No URL found!";
+    self.label.translatesAutoresizingMaskIntoConstraints = NO;
     self.label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     [self.view addSubview:self.label];
-    
-    [self.label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnLabel)]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.label attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:10.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.label attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-10.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:label attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.textfield attribute:NSLayoutAttributeTop multiplier:1.0 constant:-10.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.textfield attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.label attribute:NSLayoutAttributeTop multiplier:1.0 constant:-10.0]];
+    
+    UIView *tapHandler = [[UIView alloc] init];
+    tapHandler.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view insertSubview:tapHandler belowSubview:self.label];
+
+    [tapHandler addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler)]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:tapHandler attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.label attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:tapHandler attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:tapHandler attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:tapHandler attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -82,7 +88,7 @@
         BBURLDetection *detection = [[BBURLDetection alloc] initWithString:self.textfield.text];
         if (detection.matches.count) {
             self.currentMatch = detection.matches.firstObject;
-            self.label.text = [NSString stringWithFormat:@"URL: (Press to enter) %@", self.currentMatch.URL];
+            self.label.text = [NSString stringWithFormat:@"URL: %@ (Press to enter)", self.currentMatch.URL];
         } else {
             self.currentMatch = nil;
             self.label.text = @"URL: No URL found!";
@@ -90,7 +96,7 @@
     }
 }
 
-- (void)tapOnLabel {
+- (void)tapHandler {
     if (self.currentMatch) {
         NSURL *url = [NSURL URLWithString:self.currentMatch.URL];
         [[UIApplication sharedApplication] openURL:url];

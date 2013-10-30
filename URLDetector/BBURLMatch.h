@@ -7,7 +7,8 @@
 //
 
 typedef enum {
-    BBURLMatchTypeFullURL
+    BBURLMatchTypeFullURL,
+    BBURLMatchTypeDictionary
 } BBURLMatchType;
 
 @interface BBURLMatch : NSObject
